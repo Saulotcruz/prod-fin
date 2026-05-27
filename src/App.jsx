@@ -6,6 +6,8 @@ import HowItWorks from './components/HowItWorks'
 import Categories from './components/Categories'
 import Dashboard from './components/Dashboard'
 import Guarantee from './components/Guarantee'
+import ValueAnchoring from './components/ValueAnchoring'
+import AboutSection from './components/AboutSection'
 import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
@@ -22,6 +24,8 @@ export default function App() {
         <Categories />
         <Dashboard />
         <Guarantee />
+        <ValueAnchoring />
+        <AboutSection />
         <Pricing />
         <FAQ />
       </main>

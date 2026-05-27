@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+*.local
+
+# Arquivos internos do produto
+*.xlsm
+*.bas
+*.ps1
+
+# Configurações do editor
+.claude/

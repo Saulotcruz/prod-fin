@@ -14,7 +14,7 @@ function trackPixel() {
 export default function CTAButton({ label = 'Garantir minha planilha por R$ 37', className = '' }) {
   return (
     <motion.a
-      href="https://pay.hotmart.com/Y106020564F?off=su5pq1y4"
+      href="https://pay.hotmart.com/F106035340P?checkoutMode=10"
       onClick={trackPixel}
       className={`flex items-center justify-center gap-3 w-full min-h-[60px] px-8 py-4
         bg-gold text-ink font-bold text-base rounded-md

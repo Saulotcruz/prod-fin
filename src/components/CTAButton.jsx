@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-export default function CTAButton({ label = 'Garantir minha planilha por R$ 37', className = '' }) {
+function trackPixel() {
+  if (typeof fbq !== 'undefined') {
+    // InitiateCheckout: clique no botão de compra (recomendado)
+    fbq('track', 'InitiateCheckout', { value: 37.00, currency: 'BRL' })
+
+    // Purchase: descomente abaixo se preferir rastrear como compra no clique
+    // fbq('track', 'Purchase', { value: 37.00, currency: 'BRL' })
+  }
+}
+
+export default function CTAButton({ label = 'Garantir minha planilha por R$ 37', className = '' }) {
   return (
     <motion.a
       href="https://pay.hotmart.com/Y106020564F?off=su5pq1y4"
+      onClick={trackPixel}
       className={`flex items-center justify-center gap-3 w-full min-h-[60px] px-8 py-4
         bg-gold text-ink font-bold text-base rounded-md
         shadow-[0_4px_24px_rgba(201,168,76,0.4)]

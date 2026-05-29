@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
+function trackPixel() {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'InitiateCheckout', { value: 37.00, currency: 'BRL' })
+  }
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
 
@@ -27,6 +33,7 @@ export default function Header() {
         </span>
         <motion.a
           href="https://pay.hotmart.com/Y106020564F?off=su5pq1y4"
+          onClick={trackPixel}
           className="bg-gold text-ink text-xs font-bold px-4 py-2 rounded-md leading-none tracking-wide"
           whileTap={{ scale: 0.95 }}
           whileHover={{ backgroundColor: '#E2C478' }}

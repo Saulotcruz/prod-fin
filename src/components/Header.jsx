@@ -32,7 +32,7 @@ export default function Header() {
           Para onde foi meu dinheiro
         </span>
         <motion.a
-          href="https://pay.hotmart.com/Y106020564F?off=su5pq1y4"
+          href="https://pay.hotmart.com/F106035340P?checkoutMode=10"
           onClick={trackPixel}
           className="bg-gold text-ink text-xs font-bold px-4 py-2 rounded-md leading-none tracking-wide"
           whileTap={{ scale: 0.95 }}

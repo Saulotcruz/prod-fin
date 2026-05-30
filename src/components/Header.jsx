@@ -31,7 +31,7 @@ export default function Header() {
         <span className="font-serif text-gold text-xs tracking-wide whitespace-nowrap">
           Para onde foi meu dinheiro
         </span>
-        <motion.a
+        {/*   <motion.a
           href="https://pay.hotmart.com/F106035340P?checkoutMode=10"
           onClick={trackPixel}
           className="bg-gold text-ink text-xs font-bold px-4 py-2 rounded-md leading-none tracking-wide"
@@ -39,7 +39,7 @@ export default function Header() {
           whileHover={{ backgroundColor: '#E2C478' }}
         >
           Comprar — R$ 37
-        </motion.a>
+          </motion.a>   */}
       </div>
     </motion.header>
   )

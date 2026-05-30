@@ -25,7 +25,7 @@ export default function AboutSection() {
         <p className="font-bold text-ink text-base leading-none mb-0.5">Saulo Cruz</p>
         <p className="text-muted text-xs">Empreendedor · Tecnologia</p>
       </div>
-    </div>
+    
   </motion.div>
 </div>
 

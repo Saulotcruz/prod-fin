@@ -23,7 +23,7 @@ export default function Footer() {
               <CTAButton label="Quero o controle agora — R$ 37" />
             </div>
             <p className="text-white/35 text-xs mt-4">
-              Acesso imediato · 7 dias de garantia · Sem mensalidade
+              Acesso imediato · Acesso vitalício · Sem mensalidade
             </p>
           </motion.div>
         </div>

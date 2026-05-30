@@ -5,24 +5,29 @@ export default function AboutSection() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
-          <p className="section-eyebrow mb-8">Quem está por trás disso</p>
-
-          <div className="flex items-start gap-5">
-            {/* Avatar */}
-            <div className="shrink-0 w-16 h-16 rounded-full bg-brand flex items-center justify-center shadow-[0_4px_16px_rgba(10,61,43,0.2)]">
-                <img 
-                  src="/Foto-Saulo2.jpeg" 
-                  alt="Logo" 
-                  className="w-full h-full object-cover"
-                  </img>  
-             {/* <span className="font-serif text-gold text-xl tracking-wide">SC</span>   */}
-            </div>
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={viewportOnce}
+    variants={revealVariants}
+  >
+    <p className="section-eyebrow mb-8">Quem está por trás disso</p>
+    <div className="flex items-start gap-5">
+      {/* Avatar */}
+      <div className="shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-[0_4px_16px_rgba(10,61,43,0.2)]">
+        <img
+          src="/Foto-Saulo2.jpeg"
+          alt="Saulo Cruz"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div>
+        <p className="font-bold text-ink text-base leading-none mb-0.5">Saulo Cruz</p>
+        <p className="text-muted text-xs">Empreendedor · Tecnologia</p>
+      </div>
+    </div>
+  </motion.div>
+</div>
 
             <div>
               <p className="font-bold text-ink text-base leading-none mb-0.5">Saulo Cruz</p>

@@ -20,7 +20,7 @@ export default function AboutSection() {
                   src="/Foto-Saulo2.jpeg" 
                   alt="Logo" 
                   className="w-full h-full object-cover"
-                />  
+                  </img>  
              {/* <span className="font-serif text-gold text-xl tracking-wide">SC</span>   */}
             </div>
 

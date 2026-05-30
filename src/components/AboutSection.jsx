@@ -5,36 +5,27 @@ export default function AboutSection() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={viewportOnce}
-    variants={revealVariants}
-  >
-    <p className="section-eyebrow mb-8">Quem está por trás disso</p>
-    <div className="flex items-start gap-5">
-      {/* Avatar */}
-      <div className="shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-[0_4px_16px_rgba(10,61,43,0.2)]">
-        <img
-          src="/Foto-Saulo2.jpeg"
-          alt="Saulo Cruz"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div>
-        <p className="font-bold text-ink text-base leading-none mb-0.5">Saulo Cruz</p>
-        <p className="text-muted text-xs">Empreendedor · Tecnologia</p>
-      </div>
-    
-  </motion.div>
-</div>
-
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={revealVariants}
+        >
+          <p className="section-eyebrow mb-8">Quem está por trás disso</p>
+          <div className="flex items-start gap-5">
+            {/* Avatar */}
+            <div className="shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-[0_4px_16px_rgba(10,61,43,0.2)]">
+              <img
+                src="/Foto-Saulo2.jpeg"
+                alt="Saulo Cruz"
+                className="w-full h-full object-cover"
+              />
+            </div>
             <div>
               <p className="font-bold text-ink text-base leading-none mb-0.5">Saulo Cruz</p>
               <p className="text-muted text-xs">Empreendedor · Tecnologia</p>
             </div>
           </div>
-
           <p className="mt-6 text-ink/80 text-sm leading-[1.75]">
             Saulo Cruz é empreendedor na área de tecnologia há mais de 10 anos, com experiência
             na gestão financeira de empresas — incluindo controle de fluxo de caixa, planejamento

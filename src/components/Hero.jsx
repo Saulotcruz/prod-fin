@@ -18,7 +18,7 @@ function FadeUp({ children, delay = 0, className = '' }) {
 }
 
 export default function Hero() {
-  const checks = ['Acesso imediato', 'Sem mensalidade', 'Acesso vitalício]
+  const checks = ['Acesso imediato', 'Sem mensalidade', 'Acesso vitalício']
 
   return (
     <section className="relative bg-brand overflow-hidden min-h-[90svh] flex flex-col justify-center">

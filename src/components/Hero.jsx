@@ -48,7 +48,7 @@ export default function Hero() {
             automaticamente — sem horas de preenchimento, sem app de banco, sem mensalidade.
           </p>
         </FadeUp>
-
+{/*
         <FadeUp delay={0.42}>
           <div className="max-w-xs">
             <CTAButton label="Quero controlar meu dinheiro — R$ 37" />
@@ -62,7 +62,7 @@ export default function Hero() {
               </span>
             ))}
           </div>
-        </FadeUp>
+        </FadeUp> */}
       </div>
 
       {/* Diagonal clip into next section */}

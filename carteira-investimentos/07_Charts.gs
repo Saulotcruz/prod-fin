@@ -46,13 +46,13 @@ function montarDadosGraficos_(ss) {
     ['CDB',     '=SUMIF(' + RF + 'B:B,"CDB",' + RF + 'G:G)'],
     ['LCI/LCA', '=SUMIF(' + RF + 'B:B,"LCI",' + RF + 'G:G)+SUMIF(' + RF + 'B:B,"LCA",' + RF + 'G:G)']
   ];
-  sh.getRange(30, 10, classe.length, 2).setValues(classe);
+  sh.getRange(30, 10, classe.length, 2).setValues(fxs_(classe));
   sh.getRange(30, 11, classe.length, 1).setNumberFormat(FMT.MOEDA);
 
   // Alocação por setor (renda variável) via QUERY dinâmica.
   sh.getRange('M29').setValue('Alocação por Setor (RV)').setFontWeight('bold');
-  sh.getRange('M30').setFormula(
-    '=IFERROR(QUERY(' + RV + 'A2:I, "select C, sum(I) where C is not null group by C order by sum(I) desc label sum(I) \'\'", 0), )');
+  sh.getRange('M30').setFormula(fx_(
+    '=IFERROR(QUERY(' + RV + 'A2:I, "select C, sum(I) where C is not null group by C order by sum(I) desc label sum(I) \'\'", 0), )'));
   sh.getRange(30, 14, 20, 1).setNumberFormat(FMT.MOEDA);
 }
 

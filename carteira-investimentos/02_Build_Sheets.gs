@@ -28,7 +28,7 @@ function buildLancamentos(ss) {
     const r = i + 2;
     formulas.push(['=IF($E' + r + '="","",$E' + r + '*$F' + r + '+N($G' + r + '))']);
   }
-  sh.getRange(2, 8, N, 1).setFormulas(formulas);
+  sh.getRange(2, 8, N, 1).setFormulas(fxs_(formulas));
 
   dropdown_(sh, 'B2:B' + (N + 1), TIPOS_LANCAMENTO);
   larguras_(sh, [95, 130, 90, 130, 95, 110, 90, 120, 240]);
@@ -132,7 +132,7 @@ function buildRendaFixa(ss) {
     const liq = '=IF($K' + r + '="","",$K' + r + '-$L' + r + ')';
     f.push([aliq, bruto, ir, liq]);
   }
-  sh.getRange(2, 10, N, 4).setFormulas(f); // J,K,L,M
+  sh.getRange(2, 10, N, 4).setFormulas(fxs_(f)); // J,K,L,M
 }
 
 /* ========================== ABA 5 — PROVENTOS ============================= */
@@ -161,15 +161,15 @@ function buildProventos(ss) {
       '=IF($D' + r + '="","",$F' + r + '-$G' + r + ')'
     ]);
   }
-  sh.getRange(2, 6, N, 3).setFormulas(f);
+  sh.getRange(2, 6, N, 3).setFormulas(fxs_(f));
 
   // --- Resumo: pivot por ticker (col J/K) e por mês/ano (col M/N) ---
   faixaSecao_(sh, 1, 10, 2, 'Total por Ticker', COR.HEADER_BG);
   sh.getRange(2, 10).setValue('Ticker').setFontWeight('bold');
   sh.getRange(2, 11).setValue('Total Líquido').setFontWeight('bold');
   // QUERY agrupando por ticker (dinâmico).
-  sh.getRange(3, 10).setFormula(
-    '=IFERROR(QUERY($A$2:$H, "select B, sum(H) where B is not null group by B label sum(H) \'\'", 0), )');
+  sh.getRange(3, 10).setFormula(fx_(
+    '=IFERROR(QUERY($A$2:$H, "select B, sum(H) where B is not null group by B label sum(H) \'\'", 0), )'));
   sh.getRange(3, 11, 50, 1).setNumberFormat(FMT.MOEDA);
 
   faixaSecao_(sh, 1, 13, 2, 'Total por Mês/Ano', COR.HEADER_BG);
@@ -185,9 +185,9 @@ function buildProventos(ss) {
       '=IF($A' + r + '="","",$H' + r + ')'
     ]);
   }
-  sh.getRange(2, 16, N, 2).setFormulas(aux); // cols P, Q
-  sh.getRange(3, 13).setFormula(
-    '=IFERROR(QUERY($P$2:$Q, "select P, sum(Q) where P is not null group by P order by P label sum(Q) \'\'", 0), )');
+  sh.getRange(2, 16, N, 2).setFormulas(fxs_(aux)); // cols P, Q
+  sh.getRange(3, 13).setFormula(fx_(
+    '=IFERROR(QUERY($P$2:$Q, "select P, sum(Q) where P is not null group by P order by P label sum(Q) \'\'", 0), )'));
   sh.getRange(3, 14, 60, 1).setNumberFormat(FMT.MOEDA);
   sh.hideColumns(16, 2); // esconde colunas auxiliares P e Q
 }
@@ -324,7 +324,7 @@ function buildConfig(ss) {
     ['IPCA esperado (% a.a.)', 0.045],
     ['Última atualização completa', '=NOW()']
   ];
-  sh.getRange(2, 2, params.length, 2).setValues(params);
+  sh.getRange(2, 2, params.length, 2).setValues(fxs_(params));
   estiloInput_(sh.getRange(CFG.NOME_INVESTIDOR));
   estiloInput_(sh.getRange(CFG.ANO_FISCAL));
   estiloInput_(sh.getRange(CFG.CDI_ANUAL));
@@ -351,9 +351,9 @@ function buildDashboard(ss) {
   const sh = ss.getSheetByName(ABAS.DASHBOARD);
   sh.getRange('A1').setValue('📊 Carteira de Investimentos — Dashboard')
     .setFontSize(18).setFontWeight('bold');
-  sh.getRange('A2').setFormula(
+  sh.getRange('A2').setFormula(fx_(
     '="Investidor: "&\'' + ABAS.CONFIG + '\'!' + CFG.NOME_INVESTIDOR +
-    '&"   •   Atualizado: "&TEXT(\'' + ABAS.CONFIG + '\'!' + CFG.ULTIMA_ATUALIZACAO + ',"dd/mm/yyyy hh:mm")')
+    '&"   •   Atualizado: "&TEXT(\'' + ABAS.CONFIG + '\'!' + CFG.ULTIMA_ATUALIZACAO + ',"dd/mm/yyyy hh:mm")'))
     .setFontColor(COR.NEUTRO);
   larguras_(sh, [30, 200, 160, 40, 200, 160, 160]);
 
@@ -369,7 +369,7 @@ function buildDashboard(ss) {
     ['Rentabilidade Total (R$)', '=SUM(' + RV + 'J2:J)'],
     ['Rentabilidade Total (%)', '=IFERROR(SUM(' + RV + 'J2:J)/SUM(' + RV + 'F2:F),0)']
   ];
-  sh.getRange(4, 2, cards.length, 2).setValues(cards);
+  sh.getRange(4, 2, cards.length, 2).setValues(fxs_(cards));
   sh.getRange(4, 2, cards.length, 1).setFontWeight('bold');
   sh.getRange(4, 3, 4, 1).setNumberFormat(FMT.MOEDA);
   sh.getRange(8, 3).setNumberFormat(FMT.MOEDA);
@@ -385,8 +385,8 @@ function buildDashboard(ss) {
 
   // --- Top 5 posições (linhas 4-9, colunas E/F) ---
   faixaSecao_(sh, 3, 5, 2, 'Top 5 Posições (valor de mercado)', COR.HEADER_BG);
-  sh.getRange(4, 5).setFormula(
-    '=IFERROR(QUERY(' + RV + 'A2:I, "select A, I where A is not null order by I desc limit 5 label I \'\'", 0), )');
+  sh.getRange(4, 5).setFormula(fx_(
+    '=IFERROR(QUERY(' + RV + 'A2:I, "select A, I where A is not null order by I desc limit 5 label I \'\'", 0), )'));
   sh.getRange(4, 6, 5, 1).setNumberFormat(FMT.MOEDA);
 
   // --- Próximos 3 proventos (preenchido por atualizarDashboard) ---
@@ -411,7 +411,7 @@ function buildDashboard(ss) {
     ['% do objetivo atingido', '=' + PR + PROJ.PCT_OBJETIVO],
     ['Status', '=' + PR + PROJ.STATUS_META]
   ];
-  sh.getRange(23, 2, proj.length, 2).setValues(proj);
+  sh.getRange(23, 2, proj.length, 2).setValues(fxs_(proj));
   sh.getRange(23, 2, proj.length, 1).setFontWeight('bold');
   sh.getRange(23, 3, 2, 1).setNumberFormat(FMT.MOEDA);
   sh.getRange(26, 3).setNumberFormat(FMT.PERC);

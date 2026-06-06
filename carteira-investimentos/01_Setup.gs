@@ -119,6 +119,45 @@ function recalcularTudo(ss) {
 }
 
 /* ===========================================================================
+ *  COMPATIBILIDADE DE LOCALE EM FÓRMULAS
+ *  Em planilhas com locale pt-BR (e outros), o separador de argumentos de
+ *  função é ";" e não ",". O Apps Script grava a fórmula literalmente, então
+ *  fórmulas escritas com "," quebram (#ERROR!). Estes helpers convertem as
+ *  vírgulas que são separadores (fora de aspas) para o separador do locale.
+ * =========================================================================== */
+
+var _SEP_LISTA = null;
+
+/** Detecta o separador de lista do locale da planilha (',' para en_*, senão ';'). */
+function sepLista_() {
+  if (_SEP_LISTA === null) {
+    var loc = '';
+    try { loc = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetLocale() || ''; } catch (e) {}
+    _SEP_LISTA = /^en/i.test(loc) ? ',' : ';';
+  }
+  return _SEP_LISTA;
+}
+
+/** Converte uma fórmula (string iniciada por '=') para o separador do locale. */
+function fx_(f) {
+  if (typeof f !== 'string' || f.charAt(0) !== '=') return f;
+  var sep = sepLista_();
+  if (sep === ',') return f;
+  var out = '', inStr = false;
+  for (var i = 0; i < f.length; i++) {
+    var c = f.charAt(i);
+    if (c === '"') inStr = !inStr;
+    out += (c === ',' && !inStr) ? sep : c;
+  }
+  return out;
+}
+
+/** Converte uma matriz 2D de fórmulas/valores (passa valores não-fórmula adiante). */
+function fxs_(arr) {
+  return arr.map(function (row) { return row.map(fx_); });
+}
+
+/* ===========================================================================
  *  HELPERS DE FORMATAÇÃO (reutilizados por todos os builders)
  * =========================================================================== */
 

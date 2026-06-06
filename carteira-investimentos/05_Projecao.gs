@@ -104,9 +104,9 @@ function calcularProjecao() {
   sh.getRange(PROJ.GAP).setValue(gap);
   sh.getRange(PROJ.PCT_OBJETIVO).setValue(pctObjetivo);
   // Barra de progresso textual (robusta a locale): 20 blocos + percentual.
-  sh.getRange(PROJ.BARRA_PROGRESSO).setFormula(
+  sh.getRange(PROJ.BARRA_PROGRESSO).setFormula(fx_(
     '=REPT("█",ROUND(MIN(1,MAX(0,' + PROJ.PCT_OBJETIVO + '))*20,0))&" "&TEXT(MIN(1,' +
-    PROJ.PCT_OBJETIVO + '),"0%")').setFontColor(COR.POSITIVO);
+    PROJ.PCT_OBJETIVO + '),"0%")')).setFontColor(COR.POSITIVO);
   sh.getRange(PROJ.PATRIMONIO_PROJETADO).setValue(patrimonioProjetado);
   sh.getRange(PROJ.STATUS_META).setValue(status).setFontWeight('bold');
   sh.getRange(PROJ.RENDA_BRUTA).setValue(rendaBruta);

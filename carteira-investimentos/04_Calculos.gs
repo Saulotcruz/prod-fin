@@ -360,16 +360,9 @@ function recalcularPosicoes(ss) {
       '=NOW()'                                               // N últ. atualização
     ];
     shRV.getRange(r, 1, 1, 14).setValues([fxValores.slice(0, 5).concat(new Array(9).fill(''))]);
-    // Define fórmulas separadamente (mantém números nas 5 primeiras colunas).
-    shRV.getRange(r, 6).setFormula(fxValores[5]);
-    shRV.getRange(r, 7).setFormula(fxValores[6]);
-    shRV.getRange(r, 8).setFormula(fxValores[7]);
-    shRV.getRange(r, 9).setFormula(fxValores[8]);
-    shRV.getRange(r, 10).setFormula(fxValores[9]);
-    shRV.getRange(r, 11).setFormula(fxValores[10]);
-    shRV.getRange(r, 12).setFormula(fxValores[11]);
-    shRV.getRange(r, 13).setFormula(fxValores[12]);
-    shRV.getRange(r, 14).setFormula(fxValores[13]);
+    // Define fórmulas separadamente (mantém números nas 5 primeiras colunas),
+    // convertendo o separador de argumentos para o locale da planilha.
+    for (var c = 6; c <= 14; c++) shRV.getRange(r, c).setFormula(fx_(fxValores[c - 1]));
   });
   // Reaplica zebra e formatos numéricos que o clear pode ter mantido.
   if (linhas.length > 0) {

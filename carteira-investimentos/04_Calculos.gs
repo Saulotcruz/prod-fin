@@ -377,12 +377,22 @@ function recalcularPosicoes(ss) {
   });
 }
 
-/** Setores padrão dos tickers de exemplo (renda variável). */
+/**
+ * Setores dos tickers (renda variável). Combina os de exemplo com os das
+ * posições importadas (08_Import), se existirem.
+ */
 function setoresPadrao_() {
-  return {
+  var base = {
     'PETR4': 'Petróleo e Gás', 'VALE3': 'Mineração', 'ITUB4': 'Financeiro',
     'MXRF11': 'FII Papel', 'HGLG11': 'FII Logística', 'AAPL34': 'Tecnologia'
   };
+  try {
+    if (typeof setoresImportados_ === 'function') {
+      var imp = setoresImportados_();
+      Object.keys(imp).forEach(function (k) { base[k] = imp[k]; });
+    }
+  } catch (e) {}
+  return base;
 }
 
 /** Monta o símbolo do GOOGLEFINANCE conforme a classe do ativo. */

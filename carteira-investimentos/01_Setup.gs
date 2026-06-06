@@ -71,6 +71,8 @@ function onOpen() {
     .addItem('📈 Recalcular Projeção', 'calcularProjecao')
     .addItem('💰 Sincronizar patrimônio da carteira', 'sincronizarPatrimonioMenu_')
     .addSeparator()
+    .addItem('📥 Importar minha carteira (substitui exemplo)', 'importarPosicoesIniciais')
+    .addSeparator()
     .addItem('⏰ Instalar triggers (hourly + onEdit)', 'instalarTriggers')
     .addToUi();
 }

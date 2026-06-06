@@ -145,6 +145,28 @@ rentabilidade real 7%, IPCA 4,5%, retirada 4%, INSS R$ 1.500.
 > exemplo de **Lançamentos**, **Renda Fixa**, **Proventos** e **Eventos** e insira
 > seus dados. Ajuste **Configurações** (tickers/corretoras) e a **Seção A** da Projeção.
 
+### Importar a sua carteira (substitui o exemplo)
+
+O arquivo `08_Import.gs` já vem com as suas posições reais (extraídas da planilha
+antiga: preço médio + quantidade por ativo). Para carregá-las:
+
+1. Rode `setup()` uma vez (constrói a planilha correta, com o exemplo).
+2. No menu **📊 Carteira → 📥 Importar minha carteira**, ou rode a função
+   `importarPosicoesIniciais()` no editor.
+
+Isso **remove os dados de exemplo** e cria 1 lançamento de COMPRA de abertura por
+ativo (data de hoje, preço = preço médio), atualiza a lista de tickers e recalcula
+tudo. Para ajustar quantidades/preços depois, edite a aba **Lançamentos**.
+
+Ativos importados: 10 ações (BBAS3, BBSE3, TAEE11, CXSE3, VIVA3, ABCB4, ITSA4,
+PARD3, KLBN4, LEVE3), 4 FIIs (BRCR11, KNRI11, RBHG11, KNHY11) e 4 internacionais
+como STOCK (BRK.B, META (ex-FB), AAPL, QQQ). Excluídos: COGN3 e FAMB11 (vendidos)
+e ENBR3 (deslistada). Edite `POSICOES_IMPORTADAS` em `08_Import.gs` para mudar.
+
+> **Locale:** estas planilhas em português usam `;` como separador de fórmulas.
+> O projeto detecta o locale e converte automaticamente (helpers `fx_`/`fxs_` em
+> `01_Setup.gs`), então as fórmulas funcionam tanto em pt-BR quanto en-US.
+
 ---
 
 ## 7. Observações

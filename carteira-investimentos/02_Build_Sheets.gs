@@ -17,7 +17,7 @@ function buildLancamentos(ss) {
 
   const N = 300; // linhas pré-formatadas para lançamentos futuros
   sh.getRange(2, 1, N, 1).setNumberFormat(FMT.DATA);          // Data
-  sh.getRange(2, 5, N, 1).setNumberFormat(FMT.QTD);           // Quantidade
+  sh.getRange(2, 5, N, 1).setNumberFormat(FMT.QTD_DEC);       // Quantidade (aceita frações)
   sh.getRange(2, 6, N, 1).setNumberFormat(FMT.MOEDA);         // Preço
   sh.getRange(2, 7, N, 1).setNumberFormat(FMT.MOEDA);         // Taxas
   sh.getRange(2, 8, N, 1).setNumberFormat(FMT.MOEDA);         // Valor total
@@ -70,7 +70,7 @@ function buildRendaVariavel(ss) {
 
   // Formatos das colunas de dados (a partir da linha 2).
   const N = 60;
-  sh.getRange(2, 4, N, 1).setNumberFormat(FMT.QTD);
+  sh.getRange(2, 4, N, 1).setNumberFormat(FMT.QTD_DEC);
   sh.getRange(2, 5, N, 1).setNumberFormat(FMT.MOEDA);
   sh.getRange(2, 6, N, 1).setNumberFormat(FMT.MOEDA);
   sh.getRange(2, 7, N, 1).setNumberFormat(FMT.MOEDA);

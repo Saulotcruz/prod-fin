@@ -344,14 +344,23 @@ function recalcularPosicoes(ss) {
 
   // Escreve linhas + fórmulas vivas (cotação, valor, L/P, % carteira, YoC).
   const PROV = "'" + ABAS.PROVENTOS + "'!";
+  // Referência absoluta ao câmbio USD/BRL em Configurações, ex.: 'Configurações'!$C$4
+  const m = CFG.USD_BRL.match(/^([A-Z]+)(\d+)$/);
+  const CAMBIO = "'" + ABAS.CONFIG + "'!$" + m[1] + '$' + m[2];
   linhas.forEach(function (d, i) {
     const r = i + 2;
-    const simbolo = simboloGF_(d.ticker, d.tipo); // ex.: "PETR4.SA" ou "AAPL"
+    // Cotação via GOOGLEFINANCE referenciando a CÉLULA do ticker (coluna A),
+    // sem sufixo ".SA". Ativos em USD (tipo STOCK) são convertidos para R$.
+    var precoF = '=IFERROR(GOOGLEFINANCE($A' + r + ',"price"),0)';
+    if (d.tipo === 'STOCK') {
+      precoF += '*IFERROR(GOOGLEFINANCE("currency:USDBRL"),' + CAMBIO + ')';
+    }
+    const variacaoF = '=IFERROR(GOOGLEFINANCE($A' + r + ',"changepct")/100,0)';
     const fxValores = [
       d.ticker, d.tipo, d.setor, d.qtd, d.pm,
       '=D' + r + '*E' + r,                                   // F custo
-      '=IFERROR(GOOGLEFINANCE("' + simbolo + '","price"),0)',// G cotação
-      '=IFERROR(GOOGLEFINANCE("' + simbolo + '","changepct")/100,0)', // H variação
+      precoF,                                                // G cotação (R$)
+      variacaoF,                                             // H variação do dia
       '=D' + r + '*G' + r,                                   // I valor mercado
       '=I' + r + '-F' + r,                                   // J L/P R$
       '=IFERROR(I' + r + '/F' + r + '-1,0)',                 // K L/P %
@@ -395,12 +404,11 @@ function setoresPadrao_() {
   return base;
 }
 
-/** Monta o símbolo do GOOGLEFINANCE conforme a classe do ativo. */
-function simboloGF_(ticker, tipo) {
-  // STOCK = ação estrangeira negociada lá fora -> ticker puro.
-  if (tipo === 'STOCK') return ticker;
-  return ticker + '.SA';
-}
+/*
+ * (Removido) simboloGF_ — antes adicionava ".SA" aos tickers. As fórmulas de
+ * cotação/variação agora referenciam diretamente a célula do ticker (coluna A),
+ * sem sufixo, e convertem USD->BRL quando o tipo é STOCK. Ver recalcularPosicoes().
+ */
 
 /* ----------------------- ESCRITA DO IMPOSTO DE RENDA --------------------- */
 

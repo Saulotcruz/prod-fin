@@ -64,12 +64,6 @@ export default function Hero() {
           </div>
         </FadeUp> */}
       </div>
-
-      {/* Diagonal clip into next section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-14 bg-paper pointer-events-none"
-        style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }}
-      />
     </section>
   )
 }

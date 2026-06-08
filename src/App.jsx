@@ -20,12 +20,12 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Dashboard />
         <PainSection />
         <Story />
         <ForWho />
         <HowItWorks />
         <Categories />
-        <Dashboard />
         <Testimonials />
         <Guarantee />
         <ValueAnchoring />

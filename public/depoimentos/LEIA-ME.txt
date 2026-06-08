@@ -1,0 +1,11 @@
+Coloque aqui os prints reais de WhatsApp dos clientes.
+
+Nomes esperados pelo site (src/components/Testimonials.jsx):
+  depo-1.png
+  depo-2.png
+  depo-3.png
+
+Dicas:
+- Recorte o print mostrando a conversa (sem dados sensíveis como número de telefone, se possível).
+- Use PNG ou WebP. Proporção vertical (ex.: 800x1200) funciona melhor no mobile.
+- Para adicionar/remover depoimentos, edite a lista "prints" em src/components/Testimonials.jsx.

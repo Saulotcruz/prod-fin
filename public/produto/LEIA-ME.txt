@@ -1,0 +1,11 @@
+Salve aqui o print REAL da planilha como:
+
+  dashboard.png
+
+Importante:
+- Antes de tirar o print, troque o título no cabeçalho da planilha para
+  "Para onde foi meu dinheiro" (hoje está como "Fim do Mês no Azul"),
+  para bater com o nome do site e não gerar desconfiança.
+- O site referencia /produto/dashboard.png em src/components/Dashboard.jsx.
+- Se a proporção da imagem for diferente de 1000x640, ajuste os valores
+  w/h na constante SHOT dentro de Dashboard.jsx para evitar layout shift.

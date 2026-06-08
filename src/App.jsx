@@ -1,10 +1,12 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import PainSection from './components/PainSection'
+import Story from './components/Story'
 import ForWho from './components/ForWho'
 import HowItWorks from './components/HowItWorks'
 import Categories from './components/Categories'
 import Dashboard from './components/Dashboard'
+import Testimonials from './components/Testimonials'
 import Guarantee from './components/Guarantee'
 import ValueAnchoring from './components/ValueAnchoring'
 import AboutSection from './components/AboutSection'
@@ -19,10 +21,12 @@ export default function App() {
       <main>
         <Hero />
         <PainSection />
+        <Story />
         <ForWho />
         <HowItWorks />
         <Categories />
         <Dashboard />
+        <Testimonials />
         <Guarantee />
         <ValueAnchoring />
         <AboutSection />

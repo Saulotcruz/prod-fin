@@ -27,9 +27,9 @@ export default function App() {
         <HowItWorks />
         <Categories />
         <Testimonials />
-        <Guarantee />
-        <ValueAnchoring />
         <AboutSection />
+        <ValueAnchoring />
+        <Guarantee />
         <Pricing />
         <FAQ />
       </main>

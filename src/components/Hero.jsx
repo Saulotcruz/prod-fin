@@ -21,14 +21,14 @@ export default function Hero() {
   const checks = ['Acesso imediato', 'Sem mensalidade', 'Acesso vitalício']
 
   return (
-    <section className="relative bg-brand overflow-hidden min-h-[90svh] flex flex-col justify-center">
+    <section className="relative bg-brand overflow-hidden min-h-[62svh] flex flex-col justify-center">
       {/* Grid background */}
       <div className="absolute inset-0 bg-grid-white" />
 
       {/* Radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-brand2/40 blur-[100px] pointer-events-none" />
 
-      <div className="wrap relative z-10 pt-28 pb-20">
+      <div className="wrap relative z-10 pt-24 pb-12">
         <FadeUp delay={0.05}>
           <p className="section-eyebrow text-gold/60 mb-6">
             Planilha de Finanças Pessoais · Excel

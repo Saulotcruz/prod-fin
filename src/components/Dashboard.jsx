@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { FileSpreadsheet } from 'lucide-react'
-import { revealVariants, viewportOnce, ease } from '../hooks/useReveal'
+import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
 /*
  * Imagens em public/produto/:
@@ -19,6 +20,33 @@ function WindowChrome({ label }) {
       <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
       <span className="ml-3 text-[0.6rem] text-white/20 tracking-wider truncate">{label}</span>
     </div>
+  )
+}
+
+/*
+ * Efeito estilo Apple: a imagem cresce conforme entra na tela (pico no centro)
+ * e encolhe ao sair, atrelado à barra de rolagem (scroll-linked).
+ * `min` = escala inicial/final, `max` = escala no centro da viewport.
+ * Usa só transform/opacity (performance). Respeita prefers-reduced-motion.
+ */
+function ScrollZoom({ children, min = 0.86, max = 1.06, className = '' }) {
+  const ref = useRef(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [min, max, min])
+  const opacity = useTransform(scrollYProgress, [0, 0.18, 0.85, 1], [0.4, 1, 1, 0.7])
+
+  return (
+    <motion.div
+      ref={ref}
+      style={reduce ? undefined : { scale, opacity }}
+      className={`will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
   )
 }
 
@@ -42,14 +70,8 @@ export default function Dashboard() {
           </p>
         </motion.div>
 
-        {/* 1) Print REAL do Excel (prova) */}
-        <motion.div
-          className="max-w-lg mx-auto"
-          initial={{ opacity: 0, y: 32, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.8, ease }}
-        >
+        {/* 1) Print REAL do Excel (prova) — zoom mais forte estilo Apple */}
+        <div className="max-w-lg mx-auto">
           <div className="flex items-center justify-center gap-2 mb-3">
             <FileSpreadsheet size={15} className="text-gold shrink-0" />
             <p className="text-white/70 text-sm font-medium">
@@ -57,47 +79,46 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)] bg-[#0a1f14]">
-            <WindowChrome label="ParaOndeFoiMeuDinheiro.xlsm — Dashboard" />
-            <img
-              src={REAL.src}
-              alt="Print real da planilha no Excel mostrando recebimentos, gastos, saldo e gráficos"
-              width={REAL.w}
-              height={REAL.h}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto block"
-            />
-          </div>
+          <ScrollZoom min={0.82} max={1.08}>
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)] bg-[#0a1f14]">
+              <WindowChrome label="ParaOndeFoiMeuDinheiro.xlsm — Dashboard" />
+              <img
+                src={REAL.src}
+                alt="Print real da planilha no Excel mostrando recebimentos, gastos, saldo e gráficos"
+                width={REAL.w}
+                height={REAL.h}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto block"
+              />
+            </div>
+          </ScrollZoom>
+
           <p className="text-white/35 text-xs text-center mt-3 leading-relaxed">
             Você abre no Excel, importa o extrato e usa — sem instalar nada, sem app.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 2) Resumo visual estilizado (desejo) */}
-        <motion.div
-          className="mt-12 max-w-md mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        {/* 2) Resumo visual estilizado (desejo) — zoom mais sutil */}
+        <div className="mt-12 max-w-md mx-auto">
           <p className="text-white/70 text-sm font-medium text-center mb-3">
             E o resumo do mês fica assim — <strong className="text-white">limpo e visual</strong>
           </p>
-          <div className="rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)] bg-[#0a1f14]">
-            <WindowChrome label="ParaOndeFoiMeuDinheiro.xlsm — Resumo" />
-            <img
-              src={SUMMARY.src}
-              alt="Resumo do mês: receita, gastos, saldo, economia e gastos por categoria"
-              width={SUMMARY.w}
-              height={SUMMARY.h}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto block"
-            />
-          </div>
-        </motion.div>
+          <ScrollZoom min={0.88} max={1.04}>
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)] bg-[#0a1f14]">
+              <WindowChrome label="ParaOndeFoiMeuDinheiro.xlsm — Resumo" />
+              <img
+                src={SUMMARY.src}
+                alt="Resumo do mês: receita, gastos, saldo, economia e gastos por categoria"
+                width={SUMMARY.w}
+                height={SUMMARY.h}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto block"
+              />
+            </div>
+          </ScrollZoom>
+        </div>
       </div>
 
       <div

@@ -39,7 +39,14 @@ export default function Pricing() {
           <div className="bg-brand px-6 pt-8 pb-10 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-white" />
             <div className="relative z-10">
-              <p className="text-white/40 text-sm mb-1 line-through">De R$ 97</p>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-white/70 text-lg font-medium line-through decoration-gold/80 decoration-2">
+                  De R$ 97
+                </span>
+                <span className="text-[0.6rem] font-bold uppercase tracking-wider text-brand bg-gold px-2 py-0.5 rounded-full">
+                  Oferta de lançamento
+                </span>
+              </div>
               <div className="flex items-start justify-center gap-1">
                 <span className="font-serif text-gold text-2xl mt-3 font-normal">R$</span>
                 <span className="font-serif text-gold text-[5rem] leading-none tracking-tight">37</span>

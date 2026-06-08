@@ -24,14 +24,8 @@ function WindowChrome({ label }) {
 
 export default function Dashboard() {
   return (
-    <section className="bg-[#176B49] py-12 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden bg-[linear-gradient(180deg,#0A3D2B_0%,#176B49_30%)]">
       <div className="absolute inset-0 bg-grid-white opacity-50" />
-
-      {/* Diagonal vindo da seção anterior */}
-      <div
-        className="absolute top-0 left-0 right-0 h-14 bg-brand pointer-events-none"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
-      />
 
       <div className="wrap relative z-10">
         <motion.div

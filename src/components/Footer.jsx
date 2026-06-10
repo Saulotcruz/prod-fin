@@ -1,5 +1,6 @@
 import { m } from 'framer-motion'
 import CTAButton from './CTAButton'
+import PaymentBadges from './PaymentBadges'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
 export default function Footer() {
@@ -20,11 +21,9 @@ export default function Footer() {
               <em className="text-gold not-italic">depois que já era tarde.</em>
             </p>
             <div className="max-w-xs mx-auto">
-              <CTAButton label="Quero o controle agora — R$ 37" />
+              <CTAButton label="Quero o controle agora" />
             </div>
-            <p className="text-white/35 text-xs mt-4">
-              Acesso imediato · Acesso vitalício · Sem mensalidade
-            </p>
+            <PaymentBadges variant="dark" className="mt-5" />
           </m.div>
         </div>
       </section>

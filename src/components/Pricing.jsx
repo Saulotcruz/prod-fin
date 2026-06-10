@@ -1,6 +1,7 @@
 import { m } from 'framer-motion'
-import { Check, Lock } from 'lucide-react'
+import { Check } from 'lucide-react'
 import CTAButton from './CTAButton'
+import PaymentBadges from './PaymentBadges'
 import { revealVariants, viewportOnce, ease } from '../hooks/useReveal'
 
 const includes = [
@@ -72,11 +73,8 @@ export default function Pricing() {
             </ul>
 
             <div className="mt-8">
-              <CTAButton label="Garantir minha planilha por R$ 37" />
-              <div className="flex items-center justify-center gap-2 mt-4 text-muted text-xs">
-                <Lock size={12} />
-                <span>Compra segura · Acesso imediato após o pagamento</span>
-              </div>
+              <CTAButton label="Garantir minha planilha" />
+              <PaymentBadges variant="light" className="mt-5" />
             </div>
           </div>
         </m.div>

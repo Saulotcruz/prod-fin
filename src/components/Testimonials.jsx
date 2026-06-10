@@ -9,9 +9,9 @@ import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReve
  * O `src` aponta para /depoimentos/arquivo.png (a pasta public é servida na raiz).
  */
 const prints = [
-  { src: '/depoimentos/depo-1.png', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
-  { src: '/depoimentos/depo-2.png', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
- /* { src: '/depoimentos/depo-3.png', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },*/
+  { src: '/depoimentos/depo-1.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
+  { src: '/depoimentos/depo-2.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
+ /* { src: '/depoimentos/depo-3.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },*/
 ]
 
 export default function Testimonials() {

@@ -9,8 +9,8 @@ import { revealVariants, viewportOnce } from '../hooks/useReveal'
  *  - dash-2.png    → resumo visual estilizado (gera desejo)
  * Ajuste w/h se trocar as imagens (evita layout shift / CLS).
  */
-const REAL = { src: '/produto/dashboard.png', w: 984, h: 642 }
-const SUMMARY = { src: '/produto/dash-2.png', w: 565, h: 486 }
+const REAL = { src: '/produto/dashboard.webp', w: 984, h: 642 }
+const SUMMARY = { src: '/produto/dash-2.webp', w: 565, h: 486 }
 
 function WindowChrome({ label }) {
   return (

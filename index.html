@@ -7,27 +7,57 @@
     <meta name="description" content="Importe seu extrato bancário e descubra para onde vai cada real do seu salário — sem horas de preenchimento, sem app, sem mensalidade." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '921983914188537');
-    fbq('track', 'PageView');
-  </script>
+    <!-- Fontes carregadas sem bloquear a renderizacao (truque media=print -> all) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
 
-<!-- CLARITY -->    
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wzq0lumoi9");
-</script>
-    
+    <!-- Meta Pixel: stub inline (enfileira eventos) + carregamento adiado -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      f.__loadPixel=function(){if(f.__pixelLoaded)return;f.__pixelLoaded=1;
+        t=b.createElement(e);t.async=!0;t.src=v;
+        s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);}
+      }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '921983914188537');
+      fbq('track', 'PageView');
+    </script>
+
+    <!-- Carrega Pixel + Clarity na 1a interacao OU apos o load (idle) -->
+    <script>
+      (function () {
+        var fired = false;
+        function loadClarity(c, l, a, r, i, t, y) {
+          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+          t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        }
+        function trigger() {
+          if (fired) return; fired = true;
+          if (window.__loadPixel) window.__loadPixel();
+          loadClarity(window, document, "clarity", "script", "wzq0lumoi9");
+        }
+        ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (ev) {
+          window.addEventListener(ev, trigger, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () {
+          ('requestIdleCallback' in window)
+            ? requestIdleCallback(trigger, { timeout: 3500 })
+            : setTimeout(trigger, 3000);
+        });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

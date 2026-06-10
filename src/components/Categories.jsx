@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import {
   Heart, Smile, Home, ShoppingBag, Car,
   Play, BookOpen, Shirt, Package,
@@ -21,7 +21,7 @@ export default function Categories() {
   return (
     <section className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -36,9 +36,9 @@ export default function Categories() {
             A planilha identifica e classifica cada transação automaticamente. Você só
             precisa importar o extrato e o trabalho está feito.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="grid grid-cols-3 gap-3"
           initial="hidden"
           whileInView="visible"
@@ -46,7 +46,7 @@ export default function Categories() {
           variants={staggerContainerFast}
         >
           {categories.map(({ icon: Icon, label, color, bg }) => (
-            <motion.div
+            <m.div
               key={label}
               variants={revealVariants}
               className="flex flex-col items-center gap-2.5 p-4 rounded-xl bg-white border border-ink/6 shadow-sm"
@@ -57,9 +57,9 @@ export default function Categories() {
               <span className="text-xs font-semibold text-ink text-center leading-tight">
                 {label}
               </span>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

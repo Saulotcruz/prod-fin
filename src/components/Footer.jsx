@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import CTAButton from './CTAButton'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
@@ -9,7 +9,7 @@ export default function Footer() {
       <section className="bg-brand py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white" />
         <div className="wrap relative z-10 text-center">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
@@ -25,7 +25,7 @@ export default function Footer() {
             <p className="text-white/35 text-xs mt-4">
               Acesso imediato · Acesso vitalício · Sem mensalidade
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

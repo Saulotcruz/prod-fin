@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Check, Lock } from 'lucide-react'
 import CTAButton from './CTAButton'
 import { revealVariants, viewportOnce, ease } from '../hooks/useReveal'
@@ -17,7 +17,7 @@ export default function Pricing() {
   return (
     <section id="checkout" className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -26,9 +26,9 @@ export default function Pricing() {
         >
           <p className="section-eyebrow mb-3">Investimento</p>
           <h2 className="section-title">Tudo isso por apenas</h2>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="bg-white rounded-2xl border border-ink/8 shadow-[0_8px_40px_rgba(10,61,43,0.1)] overflow-hidden"
           initial={{ opacity: 0, y: 32, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -79,7 +79,7 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

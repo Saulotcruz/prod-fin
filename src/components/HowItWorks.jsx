@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Download, Zap, BarChart2 } from 'lucide-react'
 import { revealVariants, staggerContainer, viewportOnce, ease } from '../hooks/useReveal'
 
@@ -27,7 +27,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-cream py-20">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -41,9 +41,9 @@ export default function HowItWorks() {
           <p className="text-muted mt-4 max-w-xs mx-auto text-sm leading-relaxed">
             Do zero ao dashboard em menos de 5 minutos
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="flex flex-col gap-4"
           initial="hidden"
           whileInView="visible"
@@ -53,7 +53,7 @@ export default function HowItWorks() {
           {steps.map((step, i) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <m.div
                 key={step.number}
                 variants={revealVariants}
                 className="relative bg-white rounded-xl p-6 shadow-sm border border-ink/6"
@@ -81,10 +81,10 @@ export default function HowItWorks() {
                     <p className="text-muted text-sm leading-relaxed">{step.body}</p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

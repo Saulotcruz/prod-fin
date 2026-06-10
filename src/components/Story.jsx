@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
 export default function Story() {
@@ -11,7 +11,7 @@ export default function Story() {
       />
 
       <div className="wrap relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -43,7 +43,7 @@ export default function Story() {
           </div>
 
           <p className="mt-8 font-serif text-gold text-lg">— Saulo Cruz</p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Star } from 'lucide-react'
 import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
 
@@ -18,7 +18,7 @@ export default function Testimonials() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -35,9 +35,9 @@ export default function Testimonials() {
           <p className="text-muted text-sm mt-3 max-w-xs mx-auto leading-relaxed">
             Mensagens reais de quem já organizou as finanças com a planilha.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="flex flex-col gap-4 max-w-sm mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -45,7 +45,7 @@ export default function Testimonials() {
           variants={staggerContainer}
         >
           {prints.map((p, i) => (
-            <motion.figure
+            <m.figure
               key={i}
               variants={revealVariants}
               className="rounded-2xl overflow-hidden border border-ink/8 shadow-[0_8px_30px_rgba(10,61,43,0.10)] bg-white"
@@ -59,9 +59,9 @@ export default function Testimonials() {
                 decoding="async"
                 className="w-full h-auto block"
               />
-            </motion.figure>
+            </m.figure>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

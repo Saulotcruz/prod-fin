@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 function trackPixel() {
@@ -13,7 +13,7 @@ function trackPixel() {
 
 export default function CTAButton({ label = 'Garantir minha planilha por R$ 37', className = '' }) {
   return (
-    <motion.a
+    <m.a
       href="https://pay.hotmart.com/F106035340P?checkoutMode=10"
       onClick={trackPixel}
       className={`flex items-center justify-center gap-3 w-full min-h-[60px] px-8 py-4
@@ -28,6 +28,6 @@ export default function CTAButton({ label = 'Garantir minha planilha por R$ 37',
     >
       {label}
       <ArrowRight size={18} strokeWidth={2.5} />
-    </motion.a>
+    </m.a>
   )
 }

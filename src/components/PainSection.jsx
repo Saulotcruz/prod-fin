@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { X } from 'lucide-react'
 import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
 
@@ -25,7 +25,7 @@ export default function PainSection() {
   return (
     <section className="bg-paper py-20">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -39,9 +39,9 @@ export default function PainSection() {
             Se qualquer um desses cenários parece familiar, você não está sozinho —
             e existe uma forma muito mais fácil.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.ul
+        <m.ul
           className="mt-10 space-y-0 divide-y divide-ink/8"
           initial="hidden"
           whileInView="visible"
@@ -49,7 +49,7 @@ export default function PainSection() {
           variants={staggerContainer}
         >
           {pains.map((pain, i) => (
-            <motion.li
+            <m.li
               key={i}
               variants={revealVariants}
               className="grid grid-cols-[32px_1fr] gap-4 py-6 items-start"
@@ -61,9 +61,9 @@ export default function PainSection() {
                 <p className="font-semibold text-ink leading-snug">{pain.title}</p>
                 <p className="text-muted text-sm mt-1.5 leading-relaxed">{pain.body}</p>
               </div>
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ul>
+        </m.ul>
       </div>
     </section>
   )

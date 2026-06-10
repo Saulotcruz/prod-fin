@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Check, X } from 'lucide-react'
 import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
 
@@ -15,7 +15,7 @@ const notForItems = [
 
 function ItemRow({ icon: Icon, iconClass, bgClass, text, delay }) {
   return (
-    <motion.li
+    <m.li
       variants={revealVariants}
       className="flex items-start gap-3 py-3.5 border-b border-ink/6 last:border-0"
     >
@@ -23,7 +23,7 @@ function ItemRow({ icon: Icon, iconClass, bgClass, text, delay }) {
         <Icon size={12} className={iconClass} strokeWidth={3} />
       </div>
       <span className="text-sm text-ink leading-snug">{text}</span>
-    </motion.li>
+    </m.li>
   )
 }
 
@@ -31,7 +31,7 @@ export default function ForWho() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -42,11 +42,11 @@ export default function ForWho() {
           <h2 className="section-title max-w-xs">
             Essa planilha é para você?
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="flex flex-col gap-4">
           {/* Para quem É */}
-          <motion.div
+          <m.div
             className="bg-white rounded-xl border border-ink/6 shadow-sm overflow-hidden"
             initial="hidden"
             whileInView="visible"
@@ -72,10 +72,10 @@ export default function ForWho() {
                 />
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
           {/* Para quem NÃO É */}
-          <motion.div
+          <m.div
             className="bg-white rounded-xl border border-ink/6 shadow-sm overflow-hidden"
             initial="hidden"
             whileInView="visible"
@@ -101,7 +101,7 @@ export default function ForWho() {
                 />
               ))}
             </ul>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

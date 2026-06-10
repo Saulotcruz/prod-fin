@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Check } from 'lucide-react'
 import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
 
@@ -78,7 +78,7 @@ export default function ValueAnchoring() {
   return (
     <section className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -89,10 +89,10 @@ export default function ValueAnchoring() {
           <h2 className="section-title max-w-xs">
             Quanto custaria resolver isso de outro jeito?
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* Cards mobile */}
-        <motion.div
+        <m.div
           className="flex flex-col gap-3"
           initial="hidden"
           whileInView="visible"
@@ -100,13 +100,13 @@ export default function ValueAnchoring() {
           variants={staggerContainer}
         >
           {rows.map((row) => (
-            <motion.div key={row.alt} variants={revealVariants}>
+            <m.div key={row.alt} variants={revealVariants}>
               <MobileCard row={row} />
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           className="mt-8 text-center text-sm text-muted font-medium"
           initial="hidden"
           whileInView="visible"
@@ -115,7 +115,7 @@ export default function ValueAnchoring() {
         >
           Sem mensalidade. Sem dependência.{' '}
           <span className="text-ink font-semibold">Uma vez, seu para sempre.</span>
-        </motion.p>
+        </m.p>
       </div>
     </section>
   )

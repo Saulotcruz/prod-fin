@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
@@ -6,7 +6,7 @@ export default function Guarantee() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           className="flex flex-col items-center text-center gap-6"
           initial="hidden"
           whileInView="visible"
@@ -38,7 +38,7 @@ export default function Guarantee() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

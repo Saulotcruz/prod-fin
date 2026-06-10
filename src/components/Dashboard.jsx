@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { m, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { FileSpreadsheet } from 'lucide-react'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
@@ -40,13 +40,13 @@ function ScrollZoom({ children, min = 0.86, max = 1.06, className = '' }) {
   const opacity = useTransform(scrollYProgress, [0, 0.18, 0.85, 1], [0.4, 1, 1, 0.7])
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={reduce ? undefined : { scale, opacity }}
       className={`will-change-transform ${className}`}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -56,7 +56,7 @@ export default function Dashboard() {
       <div className="absolute inset-0 bg-grid-white opacity-50" />
 
       <div className="wrap relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -68,7 +68,7 @@ export default function Dashboard() {
           <p className="text-white/50 mt-3 text-sm max-w-xs mx-auto leading-relaxed">
             Importou o extrato? Pronto. Receita, gastos, saldo e cada categoria já aparecem organizados.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* 1) Print REAL do Excel (prova) — zoom mais forte estilo Apple */}
         <div className="max-w-lg mx-auto">

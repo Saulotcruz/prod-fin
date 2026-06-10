@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { revealVariants, viewportOnce } from '../hooks/useReveal'
 
 export default function AboutSection() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -36,7 +36,7 @@ export default function AboutSection() {
             planilha. Não é teoria de livro — é o que funciona na prática, simplificado para o
             dia a dia de qualquer pessoa.
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

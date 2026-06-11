@@ -1,6 +1,5 @@
-import { m } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const rows = [
   {
@@ -78,44 +77,26 @@ export default function ValueAnchoring() {
   return (
     <section className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="mb-10"
-        >
+        <Reveal className="mb-10">
           <p className="section-eyebrow mb-3">Ancoragem de Valor</p>
           <h2 className="section-title max-w-xs">
             Quanto custaria resolver isso de outro jeito?
           </h2>
-        </m.div>
+        </Reveal>
 
         {/* Cards mobile */}
-        <m.div
-          className="flex flex-col gap-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-        >
-          {rows.map((row) => (
-            <m.div key={row.alt} variants={revealVariants}>
+        <div className="flex flex-col gap-3">
+          {rows.map((row, i) => (
+            <Reveal key={row.alt} delay={i * 100}>
               <MobileCard row={row} />
-            </m.div>
+            </Reveal>
           ))}
-        </m.div>
+        </div>
 
-        <m.p
-          className="mt-8 text-center text-sm text-muted font-medium"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        <Reveal as="p" className="mt-8 text-center text-sm text-muted font-medium">
           Sem mensalidade. Sem dependência.{' '}
           <span className="text-ink font-semibold">Uma vez, seu para sempre.</span>
-        </m.p>
+        </Reveal>
       </div>
     </section>
   )

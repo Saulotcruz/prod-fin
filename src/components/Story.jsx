@@ -1,5 +1,4 @@
-import { m } from 'framer-motion'
-import { revealVariants, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 export default function Story() {
   return (
@@ -11,12 +10,7 @@ export default function Story() {
       />
 
       <div className="wrap relative z-10">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        <Reveal>
           <p className="section-eyebrow text-gold/60 mb-6">Por que eu criei isso</p>
 
           <blockquote className="font-serif text-white text-[clamp(1.35rem,5.5vw,1.9rem)] leading-[1.3] tracking-[-0.01em] mb-8">
@@ -43,7 +37,7 @@ export default function Story() {
           </div>
 
           <p className="mt-8 font-serif text-gold text-lg">— Saulo Cruz</p>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   )

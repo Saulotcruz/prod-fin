@@ -1,6 +1,5 @@
-import { m } from 'framer-motion'
 import { Download, Zap, BarChart2 } from 'lucide-react'
-import { revealVariants, staggerContainer, viewportOnce, ease } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const steps = [
   {
@@ -27,13 +26,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-cream py-20">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <p className="section-eyebrow mb-3">Como Funciona</p>
           <h2 className="section-title">
             Em 3 passos, tudo organizado
@@ -41,21 +34,15 @@ export default function HowItWorks() {
           <p className="text-muted mt-4 max-w-xs mx-auto text-sm leading-relaxed">
             Do zero ao dashboard em menos de 5 minutos
           </p>
-        </m.div>
+        </Reveal>
 
-        <m.div
-          className="flex flex-col gap-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-        >
+        <div className="flex flex-col gap-4">
           {steps.map((step, i) => {
             const Icon = step.icon
             return (
-              <m.div
+              <Reveal
                 key={step.number}
-                variants={revealVariants}
+                delay={i * 100}
                 className="relative bg-white rounded-xl p-6 shadow-sm border border-ink/6"
               >
                 {/* Connector line */}
@@ -81,10 +68,10 @@ export default function HowItWorks() {
                     <p className="text-muted text-sm leading-relaxed">{step.body}</p>
                   </div>
                 </div>
-              </m.div>
+              </Reveal>
             )
           })}
-        </m.div>
+        </div>
       </div>
     </section>
   )

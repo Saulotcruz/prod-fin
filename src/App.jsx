@@ -1,4 +1,3 @@
-import { LazyMotion, domAnimation } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import PainSection from './components/PainSection'
@@ -17,26 +16,24 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <LazyMotion features={domAnimation}>
-      <div className="font-sans text-ink bg-paper antialiased">
-        <Header />
-        <main>
-          <Hero />
-          <Dashboard />
-          <PainSection />
-          <Story />
-          <ForWho />
-          <HowItWorks />
-          <Categories />
-          <Testimonials />
-          <AboutSection />
-          <ValueAnchoring />
-          <Guarantee />
-          <Pricing />
-          <FAQ />
-        </main>
-        <Footer />
-      </div>
-    </LazyMotion>
+    <div className="font-sans text-ink bg-paper antialiased">
+      <Header />
+      <main>
+        <Hero />
+        <Dashboard />
+        <PainSection />
+        <Story />
+        <ForWho />
+        <HowItWorks />
+        <Categories />
+        <Testimonials />
+        <AboutSection />
+        <ValueAnchoring />
+        <Guarantee />
+        <Pricing />
+        <FAQ />
+      </main>
+      <Footer />
+    </div>
   )
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const faqs = [
   {
@@ -35,28 +34,24 @@ function FAQItem({ q, a, open, onToggle }) {
         aria-expanded={open}
       >
         <span className="font-semibold text-ink text-sm leading-snug">{q}</span>
-        <m.div
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0 mt-0.5"
-        >
-          <ChevronDown size={18} className="text-muted" />
-        </m.div>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 mt-0.5 text-muted transition-transform duration-200 ${
+            open ? 'rotate-180' : ''
+          }`}
+        />
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <m.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: 'hidden' }}
-          >
-            <p className="text-muted text-sm leading-relaxed pb-5">{a}</p>
-          </m.div>
-        )}
-      </AnimatePresence>
+      {/* Accordion em CSS puro (grid-rows 0fr -> 1fr) */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden min-h-0">
+          <p className="text-muted text-sm leading-relaxed pb-5">{a}</p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -67,35 +62,23 @@ export default function FAQ() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="mb-10"
-        >
+        <Reveal className="mb-10">
           <p className="section-eyebrow mb-3">Dúvidas Frequentes</p>
           <h2 className="section-title max-w-xs">Tem alguma dúvida?</h2>
-        </m.div>
+        </Reveal>
 
-        <m.div
-          className="bg-white rounded-xl border border-ink/6 shadow-sm divide-y divide-ink/6 px-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-        >
+        <div className="bg-white rounded-xl border border-ink/6 shadow-sm divide-y divide-ink/6 px-6">
           {faqs.map((item, i) => (
-            <m.div key={i} variants={revealVariants}>
+            <Reveal key={i} delay={i * 80}>
               <FAQItem
                 q={item.q}
                 a={item.a}
                 open={openIdx === i}
                 onToggle={() => setOpenIdx(openIdx === i ? null : i)}
               />
-            </m.div>
+            </Reveal>
           ))}
-        </m.div>
+        </div>
       </div>
     </section>
   )

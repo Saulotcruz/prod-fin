@@ -1,7 +1,6 @@
-import { m } from 'framer-motion'
 import CTAButton from './CTAButton'
 import PaymentBadges from './PaymentBadges'
-import { revealVariants, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 export default function Footer() {
   return (
@@ -10,12 +9,7 @@ export default function Footer() {
       <section className="bg-brand py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white" />
         <div className="wrap relative z-10 text-center">
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            variants={revealVariants}
-          >
+          <Reveal>
             <p className="font-serif text-[clamp(1.6rem,6vw,2.4rem)] text-white leading-[1.15] mb-6">
               Pare de descobrir onde foi seu dinheiro{' '}
               <em className="text-gold not-italic">depois que já era tarde.</em>
@@ -24,7 +18,7 @@ export default function Footer() {
               <CTAButton label="Quero o controle agora" />
             </div>
             <PaymentBadges variant="dark" className="mt-5" />
-          </m.div>
+          </Reveal>
         </div>
       </section>
 

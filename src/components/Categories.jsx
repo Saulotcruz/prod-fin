@@ -1,9 +1,8 @@
-import { m } from 'framer-motion'
 import {
   Heart, Smile, Home, ShoppingBag, Car,
   Play, BookOpen, Shirt, Package,
 } from 'lucide-react'
-import { revealVariants, staggerContainerFast, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const categories = [
   { icon: Heart,       label: 'Saúde',       color: 'text-rose-500',   bg: 'bg-rose-50' },
@@ -21,13 +20,7 @@ export default function Categories() {
   return (
     <section className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="mb-10"
-        >
+        <Reveal className="mb-10">
           <p className="section-eyebrow mb-3">Categorização Automática</p>
           <h2 className="section-title max-w-xs">
             9 categorias — sem você precisar fazer nada
@@ -36,19 +29,13 @@ export default function Categories() {
             A planilha identifica e classifica cada transação automaticamente. Você só
             precisa importar o extrato e o trabalho está feito.
           </p>
-        </m.div>
+        </Reveal>
 
-        <m.div
-          className="grid grid-cols-3 gap-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={staggerContainerFast}
-        >
-          {categories.map(({ icon: Icon, label, color, bg }) => (
-            <m.div
+        <div className="grid grid-cols-3 gap-3">
+          {categories.map(({ icon: Icon, label, color, bg }, i) => (
+            <Reveal
               key={label}
-              variants={revealVariants}
+              delay={i * 60}
               className="flex flex-col items-center gap-2.5 p-4 rounded-xl bg-white border border-ink/6 shadow-sm"
             >
               <div className={`w-10 h-10 rounded-full ${bg} flex items-center justify-center`}>
@@ -57,9 +44,9 @@ export default function Categories() {
               <span className="text-xs font-semibold text-ink text-center leading-tight">
                 {label}
               </span>
-            </m.div>
+            </Reveal>
           ))}
-        </m.div>
+        </div>
       </div>
     </section>
   )

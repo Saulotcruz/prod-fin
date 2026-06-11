@@ -1,18 +1,11 @@
-import { m } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
-import { revealVariants, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 export default function Guarantee() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          className="flex flex-col items-center text-center gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        <Reveal className="flex flex-col items-center text-center gap-6">
           <div className="w-16 h-16 rounded-full bg-brand flex items-center justify-center shadow-[0_8px_24px_rgba(10,61,43,0.25)]">
             <ShieldCheck size={28} className="text-gold" strokeWidth={1.6} />
           </div>
@@ -38,7 +31,7 @@ export default function Guarantee() {
               </span>
             ))}
           </div>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   )

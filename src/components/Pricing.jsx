@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import { m } from 'framer-motion'
 import { Check } from 'lucide-react'
 import CTAButton from './CTAButton'
 import PaymentBadges from './PaymentBadges'
-import { revealVariants, viewportOnce, ease } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const includes = [
   'Planilha completa em Excel (.xlsm)',
@@ -44,24 +43,12 @@ export default function Pricing() {
   return (
     <section id="checkout" className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="text-center mb-10"
-        >
+        <Reveal className="text-center mb-10">
           <p className="section-eyebrow mb-3">Investimento</p>
           <h2 className="section-title">Tudo isso por apenas</h2>
-        </m.div>
+        </Reveal>
 
-        <m.div
-          className="bg-white rounded-2xl border border-ink/8 shadow-[0_8px_40px_rgba(10,61,43,0.1)] overflow-hidden"
-          initial={{ opacity: 0, y: 32, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.7, ease }}
-        >
+        <Reveal className="bg-white rounded-2xl border border-ink/8 shadow-[0_8px_40px_rgba(10,61,43,0.1)] overflow-hidden">
           {/* Price header */}
           <div className="bg-brand px-6 pt-8 pb-10 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-white" />
@@ -103,7 +90,7 @@ export default function Pricing() {
               <PaymentBadges variant="light" className="mt-5" />
             </div>
           </div>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,16 +1,10 @@
-import { m } from 'framer-motion'
-import { revealVariants, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 export default function AboutSection() {
   return (
     <section className="bg-cream py-20 border-t border-ink/6">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        <Reveal>
           <p className="section-eyebrow mb-8">Quem está por trás disso</p>
           <div className="flex items-start gap-5">
             {/* Avatar */}
@@ -18,6 +12,10 @@ export default function AboutSection() {
               <img
                 src="/Foto-Saulo2.jpeg"
                 alt="Saulo Cruz"
+                width={64}
+                height={64}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -36,7 +34,7 @@ export default function AboutSection() {
             planilha. Não é teoria de livro — é o que funciona na prática, simplificado para o
             dia a dia de qualquer pessoa.
           </p>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   )

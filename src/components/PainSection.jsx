@@ -1,6 +1,5 @@
-import { m } from 'framer-motion'
 import { X } from 'lucide-react'
-import { revealVariants, staggerContainer, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 const pains = [
   {
@@ -25,12 +24,7 @@ export default function PainSection() {
   return (
     <section className="bg-paper py-20">
       <div className="wrap">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-        >
+        <Reveal>
           <p className="section-eyebrow mb-3">O Problema</p>
           <h2 className="section-title max-w-sm">
             Você ainda tenta controlar o dinheiro assim?
@@ -39,19 +33,14 @@ export default function PainSection() {
             Se qualquer um desses cenários parece familiar, você não está sozinho —
             e existe uma forma muito mais fácil.
           </p>
-        </m.div>
+        </Reveal>
 
-        <m.ul
-          className="mt-10 space-y-0 divide-y divide-ink/8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-        >
+        <ul className="mt-10 space-y-0 divide-y divide-ink/8">
           {pains.map((pain, i) => (
-            <m.li
+            <Reveal
+              as="li"
               key={i}
-              variants={revealVariants}
+              delay={i * 100}
               className="grid grid-cols-[32px_1fr] gap-4 py-6 items-start"
             >
               <div className="mt-0.5 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
@@ -61,9 +50,9 @@ export default function PainSection() {
                 <p className="font-semibold text-ink leading-snug">{pain.title}</p>
                 <p className="text-muted text-sm mt-1.5 leading-relaxed">{pain.body}</p>
               </div>
-            </m.li>
+            </Reveal>
           ))}
-        </m.ul>
+        </ul>
       </div>
     </section>
   )

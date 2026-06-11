@@ -1,13 +1,11 @@
-import { useRef } from 'react'
-import { m, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { FileSpreadsheet } from 'lucide-react'
-import { revealVariants, viewportOnce } from '../hooks/useReveal'
+import Reveal from './Reveal'
 
 /*
  * Imagens em public/produto/:
- *  - dashboard.png → print REAL do Excel (gera confiança)
- *  - dash-2.png    → resumo visual estilizado (gera desejo)
- * Ajuste w/h se trocar as imagens (evita layout shift / CLS).
+ *  - dashboard.webp → print REAL do Excel (gera confiança)
+ *  - dash-2.webp    → resumo visual estilizado (gera desejo)
  */
 const REAL = { src: '/produto/dashboard.webp', w: 984, h: 642 }
 const SUMMARY = { src: '/produto/dash-2.webp', w: 565, h: 486 }
@@ -24,29 +22,64 @@ function WindowChrome({ label }) {
 }
 
 /*
- * Efeito estilo Apple: a imagem cresce conforme entra na tela (pico no centro)
- * e encolhe ao sair, atrelado à barra de rolagem (scroll-linked).
- * `min` = escala inicial/final, `max` = escala no centro da viewport.
- * Usa só transform/opacity (performance). Respeita prefers-reduced-motion.
+ * Efeito estilo Apple sem framer-motion: a imagem cresce ao entrar (pico no centro)
+ * e encolhe ao sair, atrelado ao scroll. Usa só transform/opacity via rAF.
+ * Respeita prefers-reduced-motion.
  */
 function ScrollZoom({ children, min = 0.86, max = 1.06, className = '' }) {
   const ref = useRef(null)
-  const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [min, max, min])
-  const opacity = useTransform(scrollYProgress, [0, 0.18, 0.85, 1], [0.4, 1, 1, 0.7])
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.style.transform = 'none'
+      el.style.opacity = '1'
+      return
+    }
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight || document.documentElement.clientHeight
+      // progresso 0..1 conforme o elemento atravessa a viewport
+      const total = vh + rect.height
+      const traveled = vh - rect.top
+      const p = Math.max(0, Math.min(1, traveled / total))
+      // t: 0 nas bordas, 1 no centro
+      const t = 1 - Math.abs(p - 0.5) * 2
+      const scale = min + (max - min) * t
+
+      let opacity = 1
+      if (p < 0.18) opacity = 0.4 + (0.6 * p) / 0.18
+      else if (p > 0.85) opacity = 1 - (0.3 * (p - 0.85)) / 0.15
+
+      el.style.transform = `scale(${scale.toFixed(4)})`
+      el.style.opacity = opacity.toFixed(3)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [min, max])
 
   return (
-    <m.div
+    <div
       ref={ref}
-      style={reduce ? undefined : { scale, opacity }}
       className={`will-change-transform ${className}`}
+      style={{ transform: `scale(${min})` }}
     >
       {children}
-    </m.div>
+    </div>
   )
 }
 
@@ -56,19 +89,13 @@ export default function Dashboard() {
       <div className="absolute inset-0 bg-grid-white opacity-50" />
 
       <div className="wrap relative z-10">
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={revealVariants}
-          className="mb-8 text-center"
-        >
+        <Reveal className="mb-8 text-center">
           <p className="section-eyebrow text-gold/60 mb-3">O Produto por dentro</p>
           <h2 className="section-title-light">Seu mês inteiro em um olhar</h2>
           <p className="text-white/50 mt-3 text-sm max-w-xs mx-auto leading-relaxed">
             Importou o extrato? Pronto. Receita, gastos, saldo e cada categoria já aparecem organizados.
           </p>
-        </m.div>
+        </Reveal>
 
         {/* 1) Print REAL do Excel (prova) — zoom mais forte estilo Apple */}
         <div className="max-w-lg mx-auto">

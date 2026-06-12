@@ -11,28 +11,31 @@ export default function Story() {
 
       <div className="wrap relative z-10">
         <Reveal>
-          <p className="section-eyebrow text-gold/60 mb-6">Por que eu criei isso</p>
+          <p className="section-eyebrow text-gold/60 mb-6">A Virada</p>
 
           <blockquote className="font-serif text-white text-[clamp(1.35rem,5.5vw,1.9rem)] leading-[1.3] tracking-[-0.01em] mb-8">
-            “Eu ganhava bem e mesmo assim chegava no dia 25 no vermelho.
-            Não fazia ideia de <em className="text-gold not-italic">para onde meu dinheiro ia</em>.”
+            “Quando somei meus gastos por categoria, quase caí da cadeira: eu torrava
+            mais de <em className="text-gold not-italic">R$ 400 por mês</em> em coisas que
+            nem percebia que existiam.”
           </blockquote>
 
           <div className="space-y-4 text-white/70 text-[0.95rem] leading-[1.75] max-w-md border-l-2 border-gold/40 pl-5">
             <p>
-              Eu vivia no limite do cheque especial. Todo mês prometia que ia me organizar —
-              e todo mês o salário sumia antes de eu entender como.
+              Eu sou o Saulo. Trabalho com tecnologia há mais de 10 anos e vivia esse
+              mesmo aperto. Até que cansei e categorizei todos os meus gastos do mês, um
+              por um. Assinaturas esquecidas, delivery por preguiça, “só R$ 20” que viravam
+              centenas.
             </p>
             <p>
-              Quando sentei e finalmente categorizei tudo, levei um susto: descobri mais de
-              <strong className="text-white font-semibold"> R$ 400 por mês</strong> em assinaturas
-              e gastos invisíveis que eu nem lembrava que tinha. Em coisas que eu nem usava.
+              O problema não era nenhum gasto sozinho — era que ninguém nunca me mostrou{' '}
+              <strong className="text-white font-semibold">todos eles somados, na minha
+              cara, por categoria.</strong>
             </p>
             <p>
-              Cansei de perder horas digitando planilha à mão, então montei um sistema que lê o
-              extrato e organiza tudo sozinho. Hoje sei exatamente onde estou pisando — e sobra
-              dinheiro. <strong className="text-white font-semibold">É esse mesmo sistema que está
-              aqui dentro</strong>, pronto para você usar hoje.
+              Então construí uma planilha pra fazer esse trabalho pesado por mim. Hoje sei
+              exatamente onde estou pisando — e sobra dinheiro.{' '}
+              <strong className="text-white font-semibold">É essa mesma planilha que está
+              aqui dentro</strong>, pronta pra você usar hoje.
             </p>
           </div>
 

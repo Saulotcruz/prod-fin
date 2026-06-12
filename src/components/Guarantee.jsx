@@ -13,15 +13,16 @@ export default function Guarantee() {
           <div>
             <p className="section-eyebrow mb-2">Garantia Incondicional</p>
             <h2 className="font-serif text-[clamp(1.8rem,6vw,2.6rem)] leading-[1.1] text-ink">
-              7 dias de garantia total
+              Testa por minha conta. Por 7 dias.
             </h2>
           </div>
 
           <p className="text-muted text-base leading-relaxed max-w-sm">
-            Se por qualquer motivo você não gostar da planilha, basta enviar um e-mail
-            em até 7 dias após a compra e devolvemos{' '}
-            <strong className="text-ink font-semibold">100% do seu dinheiro</strong>.
-            Sem perguntas, sem burocracia.
+            Baixa, joga o extrato lá dentro e veja com seus olhos. Se achar que não valeu —
+            por qualquer motivo, sem explicar nada — devolvo seus{' '}
+            <strong className="text-ink font-semibold">R$ 37 inteirinhos</strong>. O risco é
+            todo meu. O único jeito de você perder é continuar mais um mês sem saber pra
+            onde seu dinheiro vai.
           </p>
 
           <div className="w-full border-t border-ink/8 pt-6 flex flex-wrap justify-center gap-8">

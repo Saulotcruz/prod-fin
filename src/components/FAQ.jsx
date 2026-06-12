@@ -4,24 +4,28 @@ import Reveal from './Reveal'
 
 const faqs = [
   {
-    q: 'Funciona com qualquer banco?',
-    a: 'Sim. A planilha é compatível com os principais bancos que permitem exportar o extrato em formato TXT: Itaú, Bradesco, Nubank, Caixa Econômica, Banco do Brasil, Santander e outros. Se o seu banco exportar em TXT, vai funcionar.',
+    q: 'Não entendo de Excel, vou conseguir?',
+    a: 'Vai. Você só joga o arquivo do banco lá dentro e a planilha faz o resto — separa em categorias e monta o painel sozinha. É mais fácil que pedir iFood. Sem fórmula, sem digitação.',
   },
   {
-    q: 'Preciso saber usar Excel avançado?',
-    a: 'Não precisa. Se você sabe abrir um arquivo e clicar em botões, consegue usar a planilha. O processo de importação é uma única ação — clicar em "Importar" e selecionar o arquivo. Pronto.',
+    q: 'Funciona com o meu banco?',
+    a: 'Sim — Nubank, Itaú, Bradesco, Caixa, Inter, Santander, Banco do Brasil e praticamente todos que deixam baixar o extrato em arquivo (TXT). Se o seu banco exporta o extrato, vai funcionar.',
   },
   {
-    q: 'E se eu não gostar da planilha?',
-    a: 'Você tem 7 dias corridos após a compra para solicitar reembolso completo. Basta mandar um e-mail — sem burocracia, sem perguntas, sem demora. Recebe o dinheiro de volta em até 24 horas.',
+    q: 'Dá trabalho manter todo mês?',
+    a: 'Não. São 3 cliques, cerca de 2 minutos, uma vez por mês. Zero digitação. Você baixa o extrato, joga na planilha e o painel se atualiza.',
   },
   {
-    q: 'Como recebo a planilha após comprar?',
-    a: 'Imediatamente após a confirmação do pagamento você recebe um e-mail com o link para download. Se não aparecer em alguns minutos, verifique a caixa de spam.',
+    q: 'É mais um app pra pagar todo mês?',
+    a: 'Não. São R$ 37 uma vez só — é seu pra sempre. Sem mensalidade, sem renovação, e seus dados ficam só com você (você não conecta sua conta a ninguém).',
+  },
+  {
+    q: 'Como recebo depois de comprar?',
+    a: 'Na hora. Assim que o pagamento é confirmado, você recebe no seu e-mail o link para baixar. Se não aparecer em alguns minutos, confira a caixa de spam.',
   },
   {
     q: 'Funciona no Mac?',
-    a: 'Sim. A planilha funciona no Microsoft Excel para Windows e Mac. Não é compatível com Google Sheets ou LibreOffice — precisa do Excel mesmo.',
+    a: 'Sim. Funciona no Microsoft Excel para Windows e Mac. Só não é compatível com Google Sheets ou LibreOffice — precisa do Excel mesmo.',
   },
 ]
 

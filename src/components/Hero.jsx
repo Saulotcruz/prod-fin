@@ -12,14 +12,16 @@ export default function Hero() {
           Planilha de Finanças Pessoais · Excel
         </p>
 
-        <h1 className="font-serif text-[clamp(2.5rem,10vw,4rem)] leading-[1.04] text-white mb-8 tracking-[-0.02em]">
-          Chega de mês a mês sem saber para onde foi{' '}
-          <em className="text-gold not-italic">o seu dinheiro.</em>
+        <h1 className="font-serif text-[clamp(2.2rem,9vw,3.6rem)] leading-[1.06] text-white mb-7 tracking-[-0.02em]">
+          Você ganha razoável. Então por que{' '}
+          <em className="text-gold not-italic">nunca sobra nada no fim do mês?</em>
         </h1>
 
-        <p className="text-white/60 text-lg leading-relaxed mb-10 border-l-2 border-gold pl-5 max-w-md">
-          Importe seu extrato bancário e veja todas as suas finanças categorizadas
-          automaticamente — sem horas de preenchimento, sem app de banco, sem mensalidade.
+        <p className="text-white/65 text-lg leading-relaxed border-l-2 border-gold pl-5 max-w-md">
+          Não é que você gasta demais. É que você gasta no escuro. Esta planilha pega
+          o extrato do seu banco e mostra, num painel simples,{' '}
+          <strong className="text-white font-semibold">pra onde foi cada centavo</strong>
+          {' '}— sem app, sem mensalidade, sem entender nada de Excel.
         </p>
       </div>
     </section>

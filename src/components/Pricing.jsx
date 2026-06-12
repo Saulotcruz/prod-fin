@@ -45,7 +45,12 @@ export default function Pricing() {
       <div className="wrap">
         <Reveal className="text-center mb-10">
           <p className="section-eyebrow mb-3">Investimento</p>
-          <h2 className="section-title">Tudo isso por apenas</h2>
+          <h2 className="section-title">Por que tão barato?</h2>
+          <p className="text-muted mt-4 max-w-md mx-auto text-sm leading-relaxed">
+            Apps de finanças cobram R$ 10–20/mês — mais de R$ 120 por ano, pra sempre — e
+            ainda exigem conectar sua conta. Eu não quero que o preço seja desculpa pra você
+            continuar no escuro.
+          </p>
         </Reveal>
 
         <Reveal className="bg-white rounded-2xl border border-ink/8 shadow-[0_8px_40px_rgba(10,61,43,0.1)] overflow-hidden">
@@ -66,6 +71,9 @@ export default function Pricing() {
                 <span className="font-serif text-gold text-[5rem] leading-none tracking-tight">37</span>
               </div>
               <p className="text-white/50 text-sm mt-2">pagamento único · sem mensalidade</p>
+              <p className="text-gold/80 text-xs mt-3 font-medium">
+                Menos do que você gastou em delivery essa semana.
+              </p>
             </div>
           </div>
 
@@ -86,7 +94,7 @@ export default function Pricing() {
             </ul>
 
             <div className="mt-8">
-              <CTAButton label="Garantir minha planilha" />
+              <CTAButton label="Quero meu painel por R$ 37" />
               <PaymentBadges variant="light" className="mt-5" />
             </div>
           </div>

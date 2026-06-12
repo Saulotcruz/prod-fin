@@ -11,12 +11,15 @@ export default function Footer() {
         <div className="wrap relative z-10 text-center">
           <Reveal>
             <p className="font-serif text-[clamp(1.6rem,6vw,2.4rem)] text-white leading-[1.15] mb-6">
-              Pare de descobrir onde foi seu dinheiro{' '}
-              <em className="text-gold not-italic">depois que já era tarde.</em>
+              Pare de chegar no fim do mês perguntando:{' '}
+              <em className="text-gold not-italic">cadê o dinheiro?</em>
             </p>
             <div className="max-w-xs mx-auto">
-              <CTAButton label="Quero o controle agora" />
+              <CTAButton label="Quero meu painel por R$ 37" />
             </div>
+            <p className="text-white/45 text-xs mt-4">
+              Pix, Boleto ou 12x no cartão · acesso imediato · risco zero por 7 dias
+            </p>
             <PaymentBadges variant="dark" className="mt-5" />
           </Reveal>
         </div>

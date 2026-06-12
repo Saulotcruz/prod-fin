@@ -6,6 +6,9 @@ import ForWho from './components/ForWho'
 import HowItWorks from './components/HowItWorks'
 import Categories from './components/Categories'
 import Dashboard from './components/Dashboard'
+import CTABand from './components/CTABand'
+import FuturePacing from './components/FuturePacing'
+import Benefits from './components/Benefits'
 import Testimonials from './components/Testimonials'
 import Guarantee from './components/Guarantee'
 import ValueAnchoring from './components/ValueAnchoring'
@@ -20,17 +23,20 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Dashboard />
         <PainSection />
         <Story />
-        <ForWho />
         <HowItWorks />
+        <Dashboard />
+        <CTABand />
+        <FuturePacing />
+        <Benefits />
         <Categories />
         <Testimonials />
+        <ForWho />
         <AboutSection />
         <ValueAnchoring />
-        <Guarantee />
         <Pricing />
+        <Guarantee />
         <FAQ />
       </main>
       <Footer />

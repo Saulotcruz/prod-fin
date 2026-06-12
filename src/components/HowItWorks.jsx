@@ -29,10 +29,11 @@ export default function HowItWorks() {
         <Reveal className="text-center mb-12">
           <p className="section-eyebrow mb-3">Como Funciona</p>
           <h2 className="section-title">
-            Em 3 passos, tudo organizado
+            Três cliques. Cerca de 2 minutos.
           </h2>
           <p className="text-muted mt-4 max-w-xs mx-auto text-sm leading-relaxed">
-            Do zero ao dashboard em menos de 5 minutos
+            Você não digita nada, não soma nada, não precisa entender de Excel. A planilha
+            faz o trabalho chato.
           </p>
         </Reveal>
 

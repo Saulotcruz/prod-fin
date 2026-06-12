@@ -67,7 +67,12 @@ export default function Pricing() {
               ))}
             </ul>
 
-            <div className="mt-8">
+            <p className="mt-6 text-xs text-muted leading-relaxed text-center italic">
+              Criada por quem vive de tecnologia há mais de 10 anos — pra resolver o
+              próprio problema antes de virar produto.
+            </p>
+
+            <div className="mt-6">
               <CTAButton label="Quero meu painel por R$ 37" />
               <PaymentBadges variant="light" className="mt-5" />
             </div>

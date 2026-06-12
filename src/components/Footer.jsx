@@ -14,6 +14,11 @@ export default function Footer() {
               Pare de chegar no fim do mês perguntando:{' '}
               <em className="text-gold not-italic">cadê o dinheiro?</em>
             </p>
+            <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto mb-6">
+              Cada mês que passa sem isso é mais um mês com dinheiro vazando sem você ver.
+              A planilha custa menos que um delivery — e o primeiro vazamento que ela te
+              mostrar já paga ela.
+            </p>
             <div className="max-w-xs mx-auto">
               <CTAButton label="Quero meu painel agora — R$ 37" />
             </div>

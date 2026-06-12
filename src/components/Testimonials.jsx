@@ -8,8 +8,20 @@ import Reveal from './Reveal'
  * O `src` aponta para /depoimentos/arquivo.png (a pasta public é servida na raiz).
  */
 const prints = [
-  { src: '/depoimentos/depo-1.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
-  { src: '/depoimentos/depo-2.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },
+  {
+    src: '/depoimentos/depo-1.webp',
+    alt: 'Depoimento de cliente no WhatsApp sobre a planilha',
+    w: 800,
+    h: 1200,
+    caption: 'Raphael: economizou mais de R$ 180/mês — R$ 2.160 no ano.',
+  },
+  {
+    src: '/depoimentos/depo-2.webp',
+    alt: 'Depoimento de cliente no WhatsApp sobre a planilha',
+    w: 800,
+    h: 1200,
+    caption: 'Victor: vai economizar R$ 3.600 no ano.',
+  },
  /* { src: '/depoimentos/depo-3.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },*/
 ]
 
@@ -47,6 +59,11 @@ export default function Testimonials() {
                 decoding="async"
                 className="w-full h-auto block"
               />
+              {p.caption && (
+                <figcaption className="px-4 py-3 text-sm font-semibold text-brand text-center border-t border-ink/6">
+                  {p.caption}
+                </figcaption>
+              )}
             </Reveal>
           ))}
         </div>

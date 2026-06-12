@@ -12,7 +12,7 @@ const steps = [
     number: '02',
     icon: Zap,
     title: 'Importe na planilha',
-    body: 'Um clique no botão de importação e a planilha lê o arquivo automaticamente. Sem copiar, sem colar, sem digitar.',
+    body: 'Um clique no botão de importação e a planilha lê seu extrato automaticamente. Sem copiar, sem colar, sem digitar.',
   },
   {
     number: '03',

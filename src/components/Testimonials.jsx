@@ -11,15 +11,15 @@ const prints = [
   {
     src: '/depoimentos/depo-1.webp',
     alt: 'Depoimento de cliente no WhatsApp sobre a planilha',
-    w: 800,
-    h: 1200,
+    w: 1179,
+    h: 1333,
     caption: 'Raphael: economizou mais de R$ 180/mês — R$ 2.160 no ano.',
   },
   {
     src: '/depoimentos/depo-2.webp',
     alt: 'Depoimento de cliente no WhatsApp sobre a planilha',
-    w: 800,
-    h: 1200,
+    w: 1119,
+    h: 1280,
     caption: 'Victor: vai economizar R$ 3.600 no ano.',
   },
  /* { src: '/depoimentos/depo-3.webp', alt: 'Depoimento de cliente no WhatsApp sobre a planilha', w: 800, h: 1200 },*/

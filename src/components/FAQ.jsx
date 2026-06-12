@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Funciona com o meu banco?',
-    a: 'Sim — Nubank, Itaú, Bradesco, Caixa, Inter, Santander, Banco do Brasil e praticamente todos que deixam baixar o extrato em arquivo (TXT). Se o seu banco exporta o extrato, vai funcionar.',
+    a: 'Sim — Nubank, Itaú, Bradesco, Caixa, Inter, Santander, Banco do Brasil e praticamente todos que deixam baixar o extrato. Se o seu banco exporta o extrato, funciona.',
   },
   {
     q: 'Dá trabalho manter todo mês?',

@@ -5,8 +5,8 @@ const steps = [
   {
     number: '01',
     icon: Download,
-    title: 'Exporte seu extrato',
-    body: 'Acesse o site do seu banco e baixe o extrato no formato TXT — compatível com Itaú, Bradesco, Nubank, Caixa e outros.',
+    title: 'Baixe seu extrato',
+    body: 'No app do seu banco, baixe o extrato do mês. Leva 30 segundos — todo banco tem essa opção.',
   },
   {
     number: '02',

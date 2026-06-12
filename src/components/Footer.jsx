@@ -15,7 +15,7 @@ export default function Footer() {
               <em className="text-gold not-italic">cadê o dinheiro?</em>
             </p>
             <div className="max-w-xs mx-auto">
-              <CTAButton label="Quero meu painel por R$ 37" />
+              <CTAButton label="Quero meu painel agora — R$ 37" />
             </div>
             <p className="text-white/45 text-xs mt-4">
               Pix, Boleto ou 12x no cartão · acesso imediato · risco zero por 7 dias

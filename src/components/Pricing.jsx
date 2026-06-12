@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Check } from 'lucide-react'
 import CTAButton from './CTAButton'
 import PaymentBadges from './PaymentBadges'
@@ -15,31 +14,6 @@ const includes = [
 ]
 
 export default function Pricing() {
-  // Dispara ViewContent (Meta Pixel) quando 70% da seção de checkout fica visível.
-  useEffect(() => {
-    const alvo = document.getElementById('checkout')
-    if (!alvo) return
-    let disparado = false
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting && !disparado) {
-          disparado = true
-          window.fbq?.('track', 'ViewContent', {
-            content_name: 'Planilha Para Onde Foi Meu Dinheiro',
-            content_ids: ['planilha-financas'],
-            content_type: 'product',
-            value: 37.0,
-            currency: 'BRL',
-          })
-          obs.disconnect()
-        }
-      },
-      { threshold: 0.7 },
-    )
-    obs.observe(alvo)
-    return () => obs.disconnect()
-  }, [])
-
   return (
     <section id="checkout" className="bg-paper py-20 border-t border-ink/6">
       <div className="wrap">
